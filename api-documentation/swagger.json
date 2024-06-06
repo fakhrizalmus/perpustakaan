@@ -1,0 +1,240 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Perpustakaan",
+        "contact": {
+            "email": "fakhrizaluciha@gmail.com"
+        }
+    },
+    "host": "localhost:4000",
+    "basePath": "/v1",
+    "tags": [
+        {
+            "name": "Member",
+            "description": "Everything about Member Data"
+        },
+        {
+            "name": "Book",
+            "description": "Everything about Book Data"
+        },
+        {
+            "name": "Peminjaman",
+            "description": "Everything about Peminjaman dan Pengembalian Data"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/v1/member": {
+            "get": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Get all member",
+                "description": "Get member",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/v1/member/pinjam": {
+            "get": {
+                "tags": [
+                    "Member"
+                ],
+                "summary": "Get all member yang pinjam",
+                "description": "Get Member Pinjam",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/v1/book": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Get All Book",
+                "description": "Get All Book",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/v1/book/pinjam": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Get all Book yang dipinjam",
+                "description": "Get all Book yang dipinjam",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/v1/peminjaman": {
+            "post": {
+                "tags": [
+                    "Peminjaman"
+                ],
+                "summary": "Add Pinjam Buku",
+                "description": "Post Peminjaman",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter the id you want to display",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#definitions/Peminjaman"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/v1/peminjaman/pengembalian": {
+            "post": {
+                "tags": [
+                    "Pengembalian"
+                ],
+                "summary": "Add Pengembalian Buku",
+                "description": "Post Pengembalian",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter the id you want to display",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#definitions/Pengembalian"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Peminjaman": {
+            "type": "object",
+            "properties": {
+                "bookId": {
+                    "type": "integer"
+                },
+                "memberId": {
+                    "type": "integer"
+                }
+            },
+            "xml": {
+                "name": "Peminjaman"
+            }
+        },
+        "Pengembalian": {
+            "type": "object",
+            "properties": {
+                "bookId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "memberId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "xml": {
+                "name": "Pengembalian"
+            }
+        },
+        "ApiResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

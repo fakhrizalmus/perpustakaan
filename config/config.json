@@ -2,9 +2,10 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": "perpuss_new",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": "3307"
   },
   "test": {
     "username": "root",
